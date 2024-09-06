@@ -9,48 +9,60 @@ export const UserProfileContextProvider = ({ children }) => {
     setUserDetailsInLocalStorage()
   );
 
+  // Function to get userDetails from localStorage or return default values
   function setUserDetailsInLocalStorage() {
-    {
-      const savedUserDetails = localStorage.getItem("userDetails");
+    const savedUserDetails = localStorage.getItem("userDetails");
+    try {
       return savedUserDetails
-        ? JSON.parse(savedUserDetails)
-        : {
-            id: "",
-            profilePic: null,
-            name: "",
-            password: "",
-            address: "",
-            phoneNumber: "",
-            locality: "",
-            email: "",
-            previewUrl: null,
-            file: null,
-            filePath: null,
-          };
+        ? JSON.parse(savedUserDetails) // Parse userDetails if present
+        : getDefaultUserDetails(); // Return default if no userDetails found
+    } catch (error) {
+      console.error("Error parsing userDetails from localStorage:", error);
+      return getDefaultUserDetails(); // Return default on JSON parse error
     }
   }
-  console.log("Context Provider Rendered with userDetails:", userDetails);
-  console.log(
-    "Context Provider Rendered with isAuthenticated:",
-    isAuthenticated
-  );
 
-  // Load token from localStorage when the app starts
+  // Function to return default user details
+  function getDefaultUserDetails() {
+    return {
+      id: "",
+      profilePic: null,
+      name: "",
+      password: "",
+      address: "",
+      phoneNumber: "",
+      locality: "",
+      email: "",
+      previewUrl: null,
+      file: null,
+      filePath: null,
+    };
+  }
+
+  // Load jwtToken and userDetails from localStorage when the app starts
   useEffect(() => {
     const storedToken = localStorage.getItem("jwtToken");
     const savedUserDetails = localStorage.getItem("userDetails");
 
-    if (storedToken && savedUserDetails) {
-      setJwtToken(storedToken);
-      setUserDetails(JSON.parse(savedUserDetails));
-      setIsAuthenticated(true);
-    } else {
+    try {
+      if (storedToken && savedUserDetails) {
+        setJwtToken(storedToken);
+        setUserDetails(JSON.parse(savedUserDetails));
+        setIsAuthenticated(true);
+      } else {
+        setJwtToken(null);
+        setUserDetails(getDefaultUserDetails());
+        setIsAuthenticated(false);
+      }
+    } catch (error) {
+      console.error("Error loading data from localStorage:", error);
       setJwtToken(null);
-      setUserDetails(null);
+      setUserDetails(getDefaultUserDetails());
       setIsAuthenticated(false);
     }
   }, []);
 
+  // Render the context provider with the necessary values
   return (
     <UserProfileContext.Provider
       value={{

@@ -22,33 +22,55 @@ export default function LogIn() {
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
+
     if (password?.length < 10) {
       setError(true);
       return;
     }
+
     const credentials = { username, password }; // Construct the credentials object
 
     try {
       const response = await axios.post(
         `${VITE_APP_API_URL}/api/authenticate/login`,
         credentials,
-        {
-          withCredentials: true,
-        }
+        { withCredentials: true }
       );
-      const { token, logInUser: user } = response.data.userData;
 
-      setJwtToken(token);
-      setUserDetails(user);
-      setIsAuthenticated(true);
+      const { token, logInUser: user } = response.data.userData || {}; // Safely destructure the data
 
-      localStorage.setItem("jwtToken", token);
-      localStorage.setItem("userDetails", JSON.stringify(user));
-      toast.success("Login Success");
-      navigate("/");
+      if (response.status === 200 && token && user) {
+        setJwtToken(token);
+        setUserDetails(user);
+        setIsAuthenticated(true);
+
+        // Save to localStorage
+        localStorage.setItem("jwtToken", token);
+        localStorage.setItem("userDetails", JSON.stringify(user));
+
+        toast.success("Login Success");
+        navigate("/");
+      } else {
+        // Handle unexpected cases
+        setJwtToken(null);
+        setUserDetails(null);
+        setIsAuthenticated(false);
+        toast.error("Unexpected error during login. Please try again.");
+      }
     } catch (error) {
       console.error("Error logging in:", error);
-      toast.error("Login Failed");
+
+      if (error.response?.status === 400) {
+        toast.error("No User Found");
+      } else if (error.response?.status === 401) {
+        toast.error("Invalid Password");
+      } else {
+        toast.error("Login Failed. Please Try Again");
+      }
+
+      setJwtToken(null);
+      setUserDetails(null);
+      setIsAuthenticated(false);
     }
   };
 
