@@ -105,7 +105,6 @@ export default function SignUp() {
           withCredentials: true,
         }
       );
-
       if (response.status === 200) {
         const { email, name, address, phone, profilePic, locality } =
           response.data;
@@ -121,12 +120,15 @@ export default function SignUp() {
         navigate("/");
       }
     } catch (error) {
-      if (error.response && error.response.status === 409) {
-        toast.success("User already registered");
+      if (error.response && error.response.status === 400) {
+        console.log(error.response.data.message);
+        toast.error(error.response.data.message);
         navigate("/signup");
+        return;
       } else {
         console.error("Error signing up:", error);
         toast.error("Error signing up");
+        return;
       }
     }
   };
