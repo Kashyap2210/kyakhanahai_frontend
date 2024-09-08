@@ -79,7 +79,7 @@ export default function ShowDish() {
       );
 
       if (response.status === 200) {
-        setDishes(response.data); // Update state with fetched dishes
+        setDishes(response.data);
         console.log("Dishes updated");
       } else {
         toast.error("Failed to fetch dishes");
@@ -92,7 +92,7 @@ export default function ShowDish() {
   };
 
   return (
-    <div className="pt-8 gap-20 flex flex-col justify-around">
+    <div className="pt-8 gap-20 h-screen flex flex-col justify-around">
       <h1 className="text-center text-4xl font-bold">Added Dishes</h1>
       <div className="flex justify-center items-center mb-16">
         {dishes.length > 0 ? (
@@ -111,7 +111,7 @@ export default function ShowDish() {
                   <tr key={dish._id}>
                     <td className="hidden">{dish._id}</td>
                     <td className="border border-black p-4 text-xl">
-                      {dish.name}
+                      {dish.userDishName}
                     </td>
                     <td className="border border-black p-4 text-xl">
                       {dish.category}

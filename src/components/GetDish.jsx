@@ -98,7 +98,7 @@ export default function GetDish() {
 
         {dish ? (
           <>
-            <p className="text-2xl mt-4">{dish.name}</p>
+            <p className="text-2xl mt-4">{dish.userDishName}</p>
             <Link to="/getdish">
               <Button
                 className="h-8 border"

@@ -60,7 +60,7 @@ export default function Profile() {
 
   return (
     // This is the grand container div
-    <div className="container py-16 px-20 flex  items-center align-center justify-center	">
+    <div className="container py-16 px-40 flex  items-center align-center justify-center	">
       {" "}
       {/* LHS Section Starts Here */}
       <div className="lhs-side  flex gap-4 flex-col items-center align-center  w-1/2">

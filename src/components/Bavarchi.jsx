@@ -60,7 +60,7 @@ export default function Bavarchi() {
   };
 
   return (
-    <div className="h-screen text-center">
+    <div className="h-screen text-center overflow-y-auto">
       <h1 className="mt-8 h-16 text-4xl font-bold	">Ask Bavarchi</h1>
       <p className="text-3xl ">
         Just Enter The Ingredients & Our AI Assistant Will Give You All The

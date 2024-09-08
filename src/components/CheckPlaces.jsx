@@ -172,7 +172,7 @@ export default function CheckPlaces() {
   };
 
   return (
-    <div className="h-full pb-60 flex flex-col justify-center items-center mt-8 overscroll-auto">
+    <div className="h-full pb-24 flex flex-col justify-center items-center mt-8 overscroll-auto">
       <div className="flex  justify-center items-center mt-12 gap-64">
         {/* Flexbox for location and Map Details */}
         <div>
