@@ -200,89 +200,82 @@ Environment Variables
 Project Structure
 Available Scripts
 Styling
-Testing
 Contributing
-License
-Project Overview
+
+### Project Overview
+
 Kyakhanahai.com enables users to:
 
-Register and log in to save their favorite dishes.
-View, add, edit, and delete dishes.
-Generate a random meal.
-Place an order via Zomato integration.
-View nearby restaurants using Google Maps API.
-Demo
-Check out the live demo here.
+- Register and log in to save their favorite dishes.
+- View, add, edit, and delete dishes.
+- Generate a random meal.
+- Place an order via Zomato integration.
+- View nearby restaurants using Google Maps API.
+- Demo
+- Check out the live demo here.
 
-Features
-User authentication with JWT tokens
-Image upload during signup
-CRUD operations for saved dishes
-Random meal generator
-Zomato integration for orders
-Google Maps API for nearby restaurants
-AI-powered dish suggestions via Gemini API
-Fully responsive design with Material UI and Tailwind CSS
-Tech Stack
-React.js – User interface
-React Router – Routing and navigation
-Material UI – UI components
-Tailwind CSS – Utility-first styling
-Axios – HTTP requests
-Google Maps API – Location services
-Gemini API – AI suggestions
-Styled Components – Component-level styling
-EmailJS – Email functionality
-JWT Decode – JWT management
-HTML React Parser – HTML rendering
-Marked – Markdown parsing
-Context API – Global state management
-React Hooks – State and lifecycle management
-Vite – Development and build
-ESLint & Prettier – Code consistency
-Getting Started
+### Features
+
+- User authentication with JWT tokens
+- Image upload during signup
+- CRUD operations for saved dishes
+- Random meal generator
+- Zomato integration for orders
+- Google Maps API for nearby restaurants
+- AI-powered dish suggestions via Gemini API
+- Fully responsive design with Material UI and Tailwind CSS
+
+### Tech Stack
+
+**React.js** – User interface
+**React Router** – Routing and navigation
+**Material UI** – UI components
+**Tailwind CSS** – Utility-first styling
+**Axios** – HTTP requests
+**Google Maps API** – Location services
+**Gemini API** – AI suggestions
+**Material UI** – Component-level styling
+**EmailJS** – Email functionality
+**JWT Decode** – JWT management
+**HTML React Parser** – HTML rendering
+**Marked** – Markdown parsing
+**Context API** – Global state management
+**React Hooks** – State and lifecycle management
+**Vite** – Development and build
+**ESLint & Prettier** – Code consistency
+
+### Getting Started
+
 Prerequisites
 Node.js (v14 or higher)
-npm or yarn
+npm
 Backend service for APIs (Backend Repo)
-Installation
-Clone the repository:
 
-bash
-Copy code
+### Installation
+
+- Clone the repository:
+
 git clone https://github.com/yourusername/kyakhanahai-frontend.git
 cd kyakhanahai-frontend
 Install dependencies:
-
-bash
-Copy code
 npm install
 
-# or
+- Running the Application
 
-yarn install
-Running the Application
-bash
-Copy code
-npm start
+npm run dev
 
-# or
+Open your browser and navigate to http://localhost:5173.
 
-yarn start
-Open your browser and navigate to http://localhost:3000.
+### Environment Variables
 
-Environment Variables
 Create a .env file in the root directory with the following:
 
-makefile
-Copy code
 REACT_APP_API_URL=http://localhost:5000
 REACT_APP_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
 REACT_APP_ZOMATO_API_KEY=your_zomato_api_key
-Project Structure
-csharp
-Copy code
-Frontend
+
+### Project Structure(Frontend)
+
 ├── public
 ├── src
 │ ├── assets # Static assets
