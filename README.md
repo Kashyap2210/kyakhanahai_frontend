@@ -297,7 +297,9 @@ Frontend
 └── package-lock.json
 └── tailwind.config.js
 └── vite.config.js
-Available Scripts
+
+### Available Scripts
+
 npm start / yarn start: Starts the development server.
 npm run build / yarn build: Builds the app for production.
 npm test / yarn test: Runs tests (if applicable).
