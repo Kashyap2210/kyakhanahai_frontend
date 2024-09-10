@@ -257,8 +257,9 @@ Backend service for APIs (Backend Repo)
 
 git clone https://github.com/yourusername/kyakhanahai-frontend.git
 cd kyakhanahai-frontend
-Install dependencies:
-npm install
+
+- Install dependencies:
+  npm install
 
 - Running the Application
 
