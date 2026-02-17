@@ -1,13 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import LoginIcon from "@mui/icons-material/Login";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import axios from "axios";
+import { useContext, useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
 import UserProfileContext from "../context/userContext";
-import toast from "react-hot-toast";
 
 const VITE_APP_API_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -34,7 +34,7 @@ export default function LogIn() {
       const response = await axios.post(
         `${VITE_APP_API_URL}/api/authenticate/login`,
         credentials,
-        { withCredentials: true }
+        { withCredentials: true },
       );
 
       const { token, logInUser: user } = response.data.userData || {}; // Safely destructure the data

@@ -1,14 +1,14 @@
-import React, { useRef, useEffect, useContext, useState } from "react";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
-import axios from "axios";
-import "../App.css";
-import { useNavigate } from "react-router-dom";
 import FollowTheSignsIcon from "@mui/icons-material/FollowTheSigns";
 import PhotoCameraIcon from "@mui/icons-material/PhotoCamera";
-import UserProfileContext from "../context/userContext";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import axios from "axios";
+import { useContext, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import "../App.css";
+import UserProfileContext from "../context/userContext";
 
 const VITE_APP_API_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -32,7 +32,7 @@ export default function SignUp() {
           {
             headers: { "Content-Type": "multipart/form-data" },
             withCredentials: true,
-          }
+          },
         );
 
         setUserDetails((prevDetails) => ({
@@ -59,7 +59,7 @@ export default function SignUp() {
             `${VITE_APP_API_URL}/api/authenticate/delete-file`,
             {
               data: { filePath: userDetails.filePath },
-            }
+            },
           );
         } catch (error) {
           toast.error("Error deleting file:", error);
@@ -103,7 +103,7 @@ export default function SignUp() {
         {
           headers: { "Content-Type": "multipart/form-data" },
           withCredentials: true,
-        }
+        },
       );
       if (response.status === 200) {
         const { email, name, address, phone, profilePic, locality } =
