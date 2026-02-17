@@ -24,7 +24,6 @@ export default function Bavarchi() {
 
   const handleSubmit = async () => {
     if (isAuthenticated == true) {
-      console.log(jwtToken);
       setResponses(["...loading"]);
       try {
         console.log("Sending req to generate dish from frontend");
@@ -39,12 +38,10 @@ export default function Bavarchi() {
             },
           },
         );
-        console.log("response", res.data.text);
         // console.log(res.data.text.parts[0].text);
         const geminiResponse = res.data.text;
         // Convert Markdown to plain text
         const plainText = markdownToPlainText(geminiResponse);
-        console.log("plainText", plainText);
         // Split the plain text into an array of items (assuming each item is preceded by a bullet point)
         const listOfItems = plainText
           .split("\n")
