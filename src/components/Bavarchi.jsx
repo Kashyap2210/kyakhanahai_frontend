@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
-import "../App.css";
-import axios from "axios";
 import Button from "@mui/material/Button";
+import axios from "axios";
 import { marked } from "marked";
-import UserProfileContext from "../context/userContext";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import "../App.css";
+import UserProfileContext from "../context/userContext";
 
 const VITE_APP_API_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -24,7 +24,6 @@ export default function Bavarchi() {
 
   const handleSubmit = async () => {
     if (isAuthenticated == true) {
-      console.log(jwtToken);
       setResponses(["...loading"]);
       try {
         console.log("Sending req to generate dish from frontend");
@@ -37,10 +36,10 @@ export default function Bavarchi() {
             headers: {
               Authorization: `Bearer ${jwtToken}`, // Make sure jwtToken is valid
             },
-          }
+          },
         );
-        console.log(res.data.text.parts[0].text);
-        const geminiResponse = res.data.text.parts[0].text;
+        // console.log(res.data.text.parts[0].text);
+        const geminiResponse = res.data.text;
         // Convert Markdown to plain text
         const plainText = markdownToPlainText(geminiResponse);
         // Split the plain text into an array of items (assuming each item is preceded by a bullet point)
